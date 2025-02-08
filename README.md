@@ -47,7 +47,6 @@ Installation & Setup 🚀
 
 Clone the repository:
 
-git clone https://github.com/yourusername/next-gen-ride.git
 cd next-gen-ride
 
 Install dependencies:
