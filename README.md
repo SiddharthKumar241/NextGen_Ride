@@ -45,8 +45,6 @@ Wallet Management: Students can top up their wallets using UPI or other payment 
 
 Installation & Setup 🚀
 
-Clone the repository:
-
 cd next-gen-ride
 
 Install dependencies:
