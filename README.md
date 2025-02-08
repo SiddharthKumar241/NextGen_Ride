@@ -65,11 +65,16 @@ AI-based fare optimization.
 
 Integration with student ID verification systems.
 
-Expanded payment options (credit/debit cards, QR code payments).
+Screenshots
 
-License 📜
+![image](https://github.com/user-attachments/assets/a90a8e8e-142d-4089-b240-40c2b562327b)
 
-This project is licensed under the MIT License.
+Node JS Server Response
+
+![image](https://github.com/user-attachments/assets/ebec159a-d2c9-4c15-a085-ed7a3e32773b)
+
+Database Server
+![image](https://github.com/user-attachments/assets/96fe219e-61b2-4265-ba2d-532a183ea071)
 
 Contributors 🤝
 
@@ -82,4 +87,6 @@ Contact 📧
 For any queries, reach out to kumarsiddharth166@gmail.com or open an issue on GitHub!
 
 💡 Next Gen Ride: Making student travel seamless, smart, and secure!
+
+
 
