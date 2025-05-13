@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 
-const mongoURI = "xxxxxxxxx/VIT";
+const mongoURI = 'mongodb+srv://yashkumarsingh2023:Yash%401234@clusterone.pvsdyde.mongodb.net/VIT?retryWrites=true&w=majority&appName=ClusterOne';
+
 
 mongoose.connect(mongoURI, {
     useNewUrlParser: true,
