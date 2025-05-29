@@ -1,8 +1,5 @@
 const mongoose = require("mongoose");
-
 const mongoURI = 'mongodb+srv://yashkumarsingh2023:xxxxx@clusterone.pvsdyde.mongodb.net/VIT?retryWrites=true&w=majority&appName=ClusterOne';
-
-
 mongoose.connect(mongoURI, {
     useNewUrlParser: true,
     useUnifiedTopology: true
@@ -29,12 +26,10 @@ async function getStudent(registerNumber) {
             return null;
         }
     } catch (error) {
-        console.error("🔥 Error in getStudent:", error);
+        console.error(" Error in getStudent:", error);
         throw error;
     }
 }
-
-
 async function updateBalance(registerNumber, newBalance) {
     try {
         const result = await Student.updateOne(
@@ -48,9 +43,8 @@ async function updateBalance(registerNumber, newBalance) {
             console.log("❌ Student not found or no change.");
         }
     } catch (error) {
-        console.error("🔥 Error in updateBalance:", error);
+        console.error(" Error in updateBalance:", error);
         throw error;
     }
 }
-
 module.exports = { getStudent, updateBalance };
