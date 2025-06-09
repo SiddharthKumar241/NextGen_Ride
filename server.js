@@ -13,7 +13,7 @@ app.use(bodyParser.json());
 
 // Serve main.html as the homepage
 app.get("/", (req, res) => {
-  res.send("✅ It works! This is your homepage route.");
+  res.sendFile(path.join(__dirname, "public", "main.html"));
 });
 
 app.use(express.static("public"));
