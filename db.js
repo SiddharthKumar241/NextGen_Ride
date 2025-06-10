@@ -14,7 +14,7 @@ const studentSchema = new mongoose.Schema({
     AVAILABLE_BALANCE: { type: Number, required: true }
 });
 
-const Student = mongoose.model("VITBUS", studentSchema, "VITBUS");
+const Student = mongoose.model("VIT", studentSchema, "VITBUS");
 
 async function getStudent(registerNumber) {
     try {
