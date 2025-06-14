@@ -80,8 +80,8 @@ Contributors 🤝
 
 Siddharth Goutam Kumar
 
-
 Contact 📧
+kumarsiddharth166@gmail.com
 
 For any queries, reach out to kumarsiddharth166@gmail.com or open an issue on GitHub!
 
