@@ -84,40 +84,46 @@
             <p id="result"><i><u>Output will be printed here</u></i></p>
         </div>
     </div>
-
     <script>
-        async function checkBalance() {
-            const registerNumber = document.getElementById("registerNumber").value;
-            const distance = document.getElementById("distance").value;
-            const resultElement = document.getElementById("result");
+    async function checkBalance() {
+        const registerNumber = document.getElementById("registerNumber").value;
+        const distance = document.getElementById("distance").value;
+        const resultElement = document.getElementById("result");
 
-            if (!registerNumber || !distance) {
-                resultElement.style.color = "red";
-                resultElement.innerHTML = "<i><u>Please enter all details.</u></i>";
-                return;
-            }
-
-            try {
-                const response = await fetch("http://localhost:5000/checkBalance", {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ registerNumber, distance }),
-                });
-
-                const data = await response.json();
-
-                if (response.ok) {
-                    resultElement.style.color = "green";
-                    resultElement.innerHTML = `<i><u>${data.message}</u></i>`;
-                } else {
-                    resultElement.style.color = "red";
-                    resultElement.innerHTML = `<i><u>${data.message}</u></i>`;
-                }
-            } catch (error) {
-                resultElement.style.color = "red";
-                resultElement.innerHTML = "<i><u>Server error! Try again.</u></i>";
-            }
+        if (!registerNumber || !distance) {
+            resultElement.style.color = "red";
+            resultElement.innerHTML = "<i><u>Please enter all details.</u></i>";
+            return;
         }
-    </script>
+
+        const baseURL = window.location.hostname.includes("localhost")
+            ? "http://localhost:5000"
+            : "https://nextgen-ride.onrender.com";  // ✅ Your actual backend
+
+        try {
+            const response = await fetch(`${baseURL}/checkBalance`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ registerNumber, distance }),
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                resultElement.style.color = "green";
+                resultElement.innerHTML = `<i><u>${data.message}</u></i>`;
+            } else {
+                resultElement.style.color = "red";
+                resultElement.innerHTML = `<i><u>${data.message}</u></i>`;
+            }
+        } catch (error) {
+            resultElement.style.color = "red";
+            resultElement.innerHTML = "<i><u>Server error! Try again.</u></i>";
+            console.error("Error:", error);
+        }
+    }
+</script>
+
+
 </body>
 </html>
