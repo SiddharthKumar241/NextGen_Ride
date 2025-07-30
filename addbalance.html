@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Add Balance - NextGen Ride</title>
+    <link rel="shortcut icon" href="./icons8-add-money-48.png" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        figure {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        figure object,
+        figure img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        body,
+        html {
+            height: 100%;
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #2a4d2a;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .form-box {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+            max-width: 400px;
+            width: 100%;
+        }
+
+        .form-floating input {
+            background-color: #bcf4db6c;
+        }
+
+        #status {
+            margin-top: 15px;
+            font-weight: bold;
+            color:green;
+        }
+
+        a.btn-link {
+            margin-top: 15px;
+            display: inline-block;
+            font-weight: 600;
+            color: #3e6f3e;
+            text-decoration: none;
+        }
+
+        a.btn-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+    <figure>
+        <object type="image/svg+xml" data="https://cdn.svgator.com/images/2022/06/animated-svg-background-css.svg"
+            aria-label="Animated SVG Background">
+            <img src="https://cdn.svgator.com/images/2022/06/animated-svg-background-css.svg"
+                alt="Animated SVG Background" />
+        </object>
+    </figure>
+
+    <div class="container">
+        <div class="form-box">
+            <img src="./Bus_Logo.svg" width="180" class="mb-3" alt="Bus Logo" />
+            <h2 class="fw-bold">Add Balance</h2>
+            <p class="mb-4">Increase balance by registration number</p>
+
+            <form onsubmit="event.preventDefault(); addBalance();">
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="regNum" placeholder="23BIT0001" required />
+                    <label for="regNum">Registration Number</label>
+                </div>
+
+                <div class="form-floating mb-3">
+                    <input type="number" class="form-control" id="amount" placeholder="Amount to add" min="1"
+                        step="0.01" required />
+                    <label for="amount">Amount (₹)</label>
+                </div>
+
+                <button type="submit" class="btn btn-success w-100">Add Balance</button>
+            </form>
+
+            <!-- Removed text-info class here -->
+            <p id="status" class="mt-3"><i><u>Status will appear here</u></i></p>
+
+            <a href="main.html" class="btn-link">← Back to Home</a>
+        </div>
+    </div>
+
+    <script>
+        async function addBalance() {
+            const regNum = document.getElementById("regNum").value.trim();
+            const amount = parseFloat(document.getElementById("amount").value);
+            const status = document.getElementById("status");
+
+            if (!regNum || isNaN(amount) || amount <= 0) {
+                status.style.color = "red";
+                status.innerHTML = "<i><u>Please fill all fields correctly with positive amount.</u></i>";
+                return;
+            }
+
+            const baseURL = window.location.hostname.includes("localhost")
+                ? "http://localhost:5000"
+                : "https://nextgen-ride.onrender.com";
+
+            try {
+                const res = await fetch(`${baseURL}/addBalance`, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        registerNumber: regNum,
+                        amount: amount,
+                    }),
+                });
+
+                const data = await res.json();
+                if (res.ok) {
+                    status.style.color = "green";
+                } else {
+                    status.style.color = "red";
+                }
+                status.innerHTML = `<i><u>${data.message}</u></i>`;
+
+            } catch (err) {
+                console.error(err);
+                status.style.color = "red";
+                status.innerHTML = "<i><u>Server error! Please try again.</u></i>";
+            }
+        }
+    </script>
+
+</body>
+
+</html>

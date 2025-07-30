@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About - NextGen Ride</title>
+  <link rel="shortcut icon" href="icons8-about-me-100.png" type="image/x-icon">
+  <style>
+    /* Basic Reset */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+      color: #2a4d2a;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Floating bubbles background effect */
+    .bubbles {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 0;
+    }
+
+    .bubble {
+      position: absolute;
+      bottom: -100px;
+      background: rgba(62, 111, 62, 0.2);
+      border-radius: 50%;
+      animation: rise 15s linear infinite;
+      opacity: 0.7;
+    }
+
+    /* Different sizes and positions for bubbles */
+    .bubble:nth-child(1) {
+      width: 80px; height: 80px;
+      left: 10%;
+      animation-duration: 12s;
+      animation-delay: 0s;
+    }
+    .bubble:nth-child(2) {
+      width: 40px; height: 40px;
+      left: 25%;
+      animation-duration: 18s;
+      animation-delay: 3s;
+    }
+    .bubble:nth-child(3) {
+      width: 60px; height: 60px;
+      left: 40%;
+      animation-duration: 14s;
+      animation-delay: 5s;
+    }
+    .bubble:nth-child(4) {
+      width: 100px; height: 100px;
+      left: 60%;
+      animation-duration: 20s;
+      animation-delay: 1s;
+    }
+    .bubble:nth-child(5) {
+      width: 50px; height: 50px;
+      left: 75%;
+      animation-duration: 16s;
+      animation-delay: 7s;
+    }
+
+    @keyframes rise {
+      0% {
+        bottom: -100px;
+        transform: translateX(0) scale(1);
+        opacity: 0.7;
+      }
+      50% {
+        opacity: 1;
+      }
+      100% {
+        bottom: 110vh;
+        transform: translateX(50px) scale(1.2);
+        opacity: 0;
+      }
+    }
+
+    /* Container with fade-in */
+    .content {
+      position: relative;
+      background: rgba(255, 255, 255, 0.85);
+      padding: 40px 30px;
+      border-radius: 20px;
+      max-width: 420px;
+      width: 100%;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+      animation: fadeInUp 1.5s ease forwards;
+      opacity: 0;
+      z-index: 1;
+    }
+
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    h1 {
+      font-size: 2.8rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      color: #2a4d2a;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+    }
+
+    p {
+      font-size: 1.2rem;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+      color: #3e6f3e;
+    }
+
+    a.portfolio-link {
+      display: inline-block;
+      background: #3e6f3e;
+      color: #fff;
+      font-weight: 700;
+      padding: 12px 30px;
+      border-radius: 30px;
+      text-decoration: none;
+      box-shadow: 0 4px 15px rgba(62, 111, 62, 0.5);
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    a.portfolio-link:hover {
+      background: #2a4d2a;
+      transform: scale(1.05);
+    }
+
+    a.back-link {
+      display: inline-block;
+      margin-top: 25px;
+      color: #2a4d2a;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: color 0.3s ease;
+    }
+    a.back-link:hover {
+      color: #3e6f3e;
+      text-decoration: underline;
+    }
+
+    /* Responsive tweaks */
+    @media (max-width: 480px) {
+      .content {
+        padding: 30px 20px;
+      }
+      h1 {
+        font-size: 2rem;
+      }
+      p {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="bubbles">
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+  </div>
+
+  <div class="content">
+    <h1>About the Developer</h1>
+    <p>Hello! I’m <strong>Siddharth Kumar</strong>, the creator behind NextGen Ride. Passionate about crafting seamless user experiences and efficient journeys.</p>
+    <p>Explore my work and projects at:</p>
+    <a href="https://siddharthkumar.tech" target="_blank" rel="noopener noreferrer" class="portfolio-link">Visit Portfolio</a>
+    <a href="main.html" class="back-link">← Back to Home</a>
+  </div>
+
+</body>
+</html>
