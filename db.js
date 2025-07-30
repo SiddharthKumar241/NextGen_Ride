@@ -14,12 +14,11 @@ const studentSchema = new mongoose.Schema({
     AVAILABLE_BALANCE: { type: Number, required: true }
 });
 
-const Student = mongoose.model("VIT", studentSchema, "VITBUS");
+const Student = mongoose.model("VITBUS", studentSchema, "VITBUS");
 
 async function getStudent(registerNumber) {
     try {
-        const student = await Student.findOne({ REGISTER_NUMBER: registerNumber });
-        return student;
+        return await Student.findOne({ REGISTER_NUMBER: registerNumber });
     } catch (error) {
         throw error;
     }
@@ -36,4 +35,17 @@ async function updateBalance(registerNumber, newBalance) {
     }
 }
 
-module.exports = { getStudent, updateBalance };
+async function addStudent({ registerNumber, name, balance }) {
+    try {
+        const newStudent = new Student({
+            REGISTER_NUMBER: registerNumber,
+            NAME: name,
+            AVAILABLE_BALANCE: balance
+        });
+        await newStudent.save();
+    } catch (error) {
+        throw error;
+    }
+}
+
+module.exports = { getStudent, updateBalance, addStudent };
