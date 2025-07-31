@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>NextGen Ride - Home</title>
+    <link rel="shortcut icon" href="./icons8-homepage-50.png" type="image/x-icon">
 
     <style>
         figure {
@@ -27,6 +28,8 @@
             margin: 0;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             color: #2a4d2a;
+            position: relative;
+            overflow-x: hidden;
         }
 
         .container {
@@ -37,29 +40,32 @@
             align-items: center;
             text-align: center;
             padding: 20px;
+            max-width: 600px;
+            margin: 0 auto;
         }
 
         .btn-mainpage {
-    background-color: #3b82f6; /* bright blue */
-    border: none;
-    color: white;
-    font-weight: 600;
-    padding: 15px 40px;
-    font-size: 1.5rem;
-    border-radius: 12px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    margin-top: 20px;
-    text-decoration: none;
-    display: inline-block;
-}
-.btn-mainpage:hover {
-    background-color: #2563eb; 
-    transform: scale(1.05);
-    color: white;
-    text-decoration: none;
-}
+            background-color: #3b82f6; 
+            border: none;
+            color: white;
+            font-weight: 600;
+            padding: 15px 60px;
+            font-size: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            margin-top: 20px;
+            text-decoration: none;
+            display: inline-block;
+            min-width: 280px;
+        }
+        .btn-mainpage:hover {
+            background-color: #2563eb; 
+            transform: scale(1.05);
+            color: white;
+            text-decoration: none;
+        }
 
         h1 {
             font-weight: 700;
@@ -73,6 +79,55 @@
             margin-bottom: 1.5em;
             font-style: italic;
             color: #3e6f3e;
+        }
+
+        /* Floating developer badge */
+        .dev-badge {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(59, 130, 246, 0.7);
+            color: white;
+            padding: 10px 18px;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 50px;
+            box-shadow: 0 4px 10px rgba(59, 130, 246, 0.5);
+            cursor: pointer;
+            user-select: none;
+            transition: background 0.3s ease, transform 0.3s ease;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .dev-badge:hover {
+            background: #2563eb;
+            transform: scale(1.1);
+            text-decoration: none;
+        }
+
+        /* Small pulsing dot */
+        .pulse-dot {
+            width: 10px;
+            height: 10px;
+            background: #34d399;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.5);
+                opacity: 0.6;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
         }
     </style>
 
@@ -93,5 +148,10 @@
         <p>Welcome! Your seamless journey starts here.</p>
         <a href="index.html" class="btn-mainpage">Go to Main Page</a>
     </div>
+
+    <a href="about.html" class="dev-badge" target="_blank" rel="noopener">
+        <span class="pulse-dot"></span>
+        About the Developer (Siddharth Kumar)
+    </a>
 </body>
 </html>
